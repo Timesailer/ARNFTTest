@@ -20,7 +20,7 @@ html,body {
 </style>
 </head>
 <body>
-
+<p id="fps">fps:</p>
 <h1>NFT marker example with Three.js</h1>
 <p>On Chrome on Android, tap the screen to start playing video stream.</p>
 <p>Show  <a href="https://github.com/artoolkit/artoolkit5/blob/master/doc/Marker%20images/pinball.jpg">Pinball image</a> to camera to display a colorful object on top of it. Tap the screen to rotate the object.
@@ -108,6 +108,8 @@ window.ARThreeOnLoad = function() {
 			console.log('pinball loaded')
 		});
 		*/
+
+		var lastCalledTime, fps;
 		var tick = function() {
 			arScene.process();
 
@@ -118,6 +120,15 @@ window.ARThreeOnLoad = function() {
 			rotationV *= 0.8;
 
 			arScene.renderOn(renderer);
+			if(!lastCalledTime) {
+     			lastCalledTime = Date.now();
+     			fps = 0;
+     			return;
+  			}
+  			delta = (Date.now() - lastCalledTime)/1000;
+  			lastCalledTime = Date.now();
+  			fps = 1/delta;
+  			document.getElementByID("fps").innerHTML = "fps: " + fps;
 			requestAnimationFrame(tick);
 		};
 
