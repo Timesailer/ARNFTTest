@@ -104,7 +104,7 @@ window.ARThreeOnLoad = function() {
 		arController.loadNFTMarker('DataNFT/pinball', function(markerId){
 			var markerRoot = arController.createThreeNFTMarker(markerId);
 			markerRoot.add(sphere);
-			arScene.add(markerRoot);
+			arScene.scene.add(markerRoot);
 			console.log('pinball loaded')
 		});
 
