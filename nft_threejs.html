@@ -48,7 +48,7 @@ window.ARThreeOnLoad = function() {
 			renderer.domElement.style.paddingBottom = (w-h) + 'px';
 		} else {
 			if (/Android|mobile|iPad|iPhone/i.test(navigator.userAgent)) {
-				renderer.setSize(arController.videoWidth, arController.videoHeight); //Canvas on Mobile not showing so fuck responsive and try this
+				renderer.setSize(arController.videoWidth, arController.videoHeight);
 				//renderer.setSize(window.innerWidth, (window.innerWidth / arController.videoWidth) * arController.videoHeight);
 			} else {
 				renderer.setSize(arController.videoWidth, arController.videoHeight);
@@ -99,7 +99,7 @@ window.ARThreeOnLoad = function() {
 			console.log('wave loaded')
 		});
 
-		//Doesnt work because XSS Policy but wave works? im so confused
+		/* Loading this after the wave fails
 		console.log('#################Reading pinball marker#################');
 		arController.loadNFTMarker('DataNFT/pinball', function(markerId){
 			var markerRoot = arController.createThreeNFTMarker(markerId);
@@ -107,13 +107,14 @@ window.ARThreeOnLoad = function() {
 			arScene.scene.add(markerRoot);
 			console.log('pinball loaded')
 		});
-
+		*/
 		var tick = function() {
 			arScene.process();
 
 			rotationV += (rotationTarget - sphere.rotation.z) * 0.05;
 			sphere.rotation.z += rotationV;
 			torus.rotation.y += rotationV;
+			cube.rotation.z += rotationV;
 			rotationV *= 0.8;
 
 			arScene.renderOn(renderer);
