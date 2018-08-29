@@ -109,8 +109,11 @@ window.ARThreeOnLoad = function() {
 		});
 		*/
 
-		var lastCalledTime, fps;
+		var lastCalledTime = Date.now();
+		var fps = 0;
+		var fpselement = document.getElementById("fps");
 		var tick = function() {
+			
 			arScene.process();
 
 			rotationV += (rotationTarget - sphere.rotation.z) * 0.05;
@@ -120,15 +123,12 @@ window.ARThreeOnLoad = function() {
 			rotationV *= 0.8;
 
 			arScene.renderOn(renderer);
-			if(!lastCalledTime) {
-     			lastCalledTime = Date.now();
-     			fps = 0;
-     			return;
-  			}
+
+			
   			delta = (Date.now() - lastCalledTime)/1000;
   			lastCalledTime = Date.now();
   			fps = 1/delta;
-  			document.getElementByID("fps").innerHTML = "fps: " + fps;
+  			fpselement.innerHTML = "fps: " + fps;
 			requestAnimationFrame(tick);
 		};
 
