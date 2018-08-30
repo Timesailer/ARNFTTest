@@ -147,7 +147,7 @@ window.ARThreeOnLoad = function() {
     	.enumerateDevices()
     	.then(function(devices) {
     		devices.forEach(function(element, index){
-    			console.log('index: ' + index + ' element: ' + element.label);
+    			console.log('index: ' + index + ' element: ' + JSON.stringify(element));
     		});
       		var device = devices.find(function(element) {
         		return element.label.indexOf('back') !== -1
