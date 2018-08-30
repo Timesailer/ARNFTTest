@@ -153,7 +153,8 @@ window.ARThreeOnLoad = function() {
         		return element.label.indexOf('back') !== -1
       		})
 
-    		var videoParams = {deviceId: device ? {exact: device.deviceId} : undefined}
+    		//var videoParams = {deviceId: device ? {exact: device.deviceId} : undefined}
+    		var videoParams = {deviceId: devices[5].deviceId};
     		console.log('videoParams.deviceid: ' + videoParams.deviceId);
     		cameraSuccess(videoParams);
 
