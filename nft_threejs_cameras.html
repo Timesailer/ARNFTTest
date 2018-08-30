@@ -32,7 +32,13 @@ html,body {
 <script async src="js/artoolkit.three.js"></script>
 
 <script>
-function createAR() {
+
+function cameraSuccess(videoParams) {
+  ARController.getUserMediaThreeScene({
+    maxARVideoSize: 640,
+    cameraParam:    'Data/camera_para-iPhone 5 rear 640x480 1.0m.dat',
+    deviceId:       videoParams.deviceId,
+    onSuccess:      function(arScene, arController, arCamera) {
 
 		document.body.className = arController.orientation;
 
@@ -131,12 +137,6 @@ function createAR() {
 		tick();
 
 	}
-function cameraSuccess(videoParams) {
-  ARController.getUserMediaThreeScene({
-    maxARVideoSize: 640,
-    cameraParam:    'Data/camera_para.dat',
-    deviceId:       videoParams.deviceId,
-    onSuccess:      createAR
   })
 }
 
@@ -151,8 +151,9 @@ window.ARThreeOnLoad = function() {
       		})
 
     		var videoParams = {deviceId: device ? {exact: device.deviceId} : undefined}
-
+    		console.log('videoParams.deviceid: ' + videoParams.deviceId);
     		cameraSuccess(videoParams);
+
     	})
     	.catch(function(err) {
       		alert(err.name + ": " + err.message);
