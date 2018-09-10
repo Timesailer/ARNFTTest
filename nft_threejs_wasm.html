@@ -30,7 +30,7 @@ html,body {
 <script type='text/javascript'>
       var artoolkit_wasm_url = 'js/artoolkitwasm.min.wasm';
 </script>
-<script async src="js/artoolkit.min.js"></script>
+<script async src="js/artoolkit_wasm.js"></script>
 <script async src="js/three.min.js"></script>
 <script async src="js/artoolkit.three.js"></script>
 
@@ -60,7 +60,7 @@ if (window.ARController && ARController.getUserMediaThreeScene) {
 }
 
 function arstuff(){
-	ARController.getUserMediaThreeScene({maxARVideoSize: 320, cameraParam: 'Data/camera_para-iPhone 5 rear 640x480 1.0m.dat', 
+	ARController.getUserMediaThreeScene({maxARVideoSize: 320, cameraParam: 'Data/camera_para.dat', 
 	onSuccess: function(arScene, arController, arCamera) {
 
 		document.body.className = arController.orientation;
