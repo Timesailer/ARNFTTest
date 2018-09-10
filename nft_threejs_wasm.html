@@ -35,11 +35,10 @@ html,body {
 <script async src="js/artoolkit.three.js"></script>
 
 <script>
-
-window.addEventListener('artoolkit-loaded', () => {  
-	console.log('ARToolkit loaded');
-	    window.ARThreeOnLoad = function() {
-	    console.log('arthree loaded');
+window.ARThreeOnLoad = function() {
+	console.log('arthree loaded');
+	window.addEventListener('artoolkit-loaded', () => {  
+		console.log('ARToolkit loaded');
 		ARController.getUserMediaThreeScene({maxARVideoSize: 320, cameraParam: 'Data/camera_para.dat', 
 		onSuccess: function(arScene, arController, arCamera) {
 
